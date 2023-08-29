@@ -1,0 +1,45 @@
+#include <Arduino.h>
+#include <WiFi.h>
+#include <WiFiClient.h>
+
+#define LED_pin 2
+
+const char* ssid = "ESP32-AP";
+const char* password = "password";
+const uint16_t port = 1234;
+const IPAddress ip(192, 168, 4, 1);
+
+WiFiServer server(port);
+
+void setup() {
+  pinMode(LED_pin, OUTPUT);
+  Serial.begin(115200);
+  WiFi.mode(WIFI_AP);
+  WiFi.softAP(ssid, password);
+  Serial.println("Access point created");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.softAPIP());
+  server.begin();
+}
+
+void loop() {
+  WiFiClient client = server.available();
+  digitalWrite(LED_pin, HIGH);
+  delay(500);
+  Serial.println("Waiting Client to connect !");
+  if (client) {
+    Serial.println("Client connected");
+    while (client.connected()) {
+      if (client.available()) {
+        String request = client.readStringUntil('\n');
+        if (request == "Hello, ESP32!") {
+          client.println("Hello, PC!");
+        }
+      }
+    }
+    client.stop();
+    Serial.println("Client disconnected");
+  }
+  digitalWrite(LED_pin, LOW);
+  delay(500);
+}
