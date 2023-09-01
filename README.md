@@ -23,7 +23,7 @@ where the transmission's velocity is negative, the error is still go up to 50 %.
 to your comments. If you want to ask questions, you can contact me at the address below.
 
 # Youtube Channel
-+ You can watch this project's video on Youtube: 
++ You can watch this project's video on Youtube: https://youtu.be/mwmY_hU-UsM
 + If you can, please support me on my Youtube's channel: @ElectricalThinking29.
 
 # Contact
