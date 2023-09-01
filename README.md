@@ -12,7 +12,7 @@ specified port.
 
 # Results and Reviews
 + Below is the result's data.
-![Result2](result2.jpg)
+![Result2](result.jpg)
 + As you can see, the error is pretty large, from few to over 100 %. If we ignore the case
 where the transmission's velocity is negative, the error is still go up to 50 %.
 + There are a number of issues that I think will improve measurement results:
